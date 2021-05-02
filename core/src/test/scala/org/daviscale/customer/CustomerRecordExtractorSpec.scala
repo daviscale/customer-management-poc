@@ -12,7 +12,7 @@ class CustomerRecordExtractorSpec extends AnyFlatSpec {
       "Jane",
       "jane.doe@example.org",
       "Orange",
-      "01/01/1970"
+      "12/01/1970"
     ).mkString(delimiter)
   }
 
@@ -21,24 +21,25 @@ class CustomerRecordExtractorSpec extends AnyFlatSpec {
     "Doe",
     "jane.doe@example.org",
     "Orange",
-    LocalDate.of(1970, 5, 1)
+    LocalDate.of(1970, 1, 12)
   )
 
   def runTest(delimiter: String): Boolean = {
-    CustomerRecordExtractor.extract(makeInputRow(delimiter)) == expectedCustomerRecord
+    CustomerRecordExtractor
+      .extract(makeInputRow(delimiter)) == expectedCustomerRecord
   }
 
   "CustomerRecordExtractor" should "extract a CustomerRecord when a comma delimiter is used" in {
-    runTest(",")
-    runTest(" , ")
+    assert(runTest(","))
+    assert(runTest(" , "))
   }
 
   it should "extract a CustomerRecord when a pipe delimiter is used" in {
-    runTest("|")
-    runTest(" | ")
+    assert(runTest("|"))
+    assert(runTest(" | "))
   }
 
   it should "extract a CustomerRecord when a space delimiter is used" in {
-    runTest("")
+    assert(runTest(" "))
   }
 }
