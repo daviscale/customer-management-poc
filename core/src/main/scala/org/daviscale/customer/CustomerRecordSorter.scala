@@ -1,6 +1,31 @@
 package org.daviscale.customer
 
+sealed trait SortingMethod
+
+object SortingMethod {
+  case object ColorAndLastName extends SortingMethod
+  case object BirthDate extends SortingMethod
+  case object LastName extends SortingMethod
+
+  val all = Seq(
+    ColorAndLastName,
+    BirthDate,
+    LastName
+  )
+}
+
 object CustomerRecordSorter {
+
+  def sort(customers: Seq[CustomerRecord], sortingMethod: SortingMethod): Seq[CustomerRecord] = {
+    sortingMethod match {
+      case SortingMethod.ColorAndLastName =>
+        sortByColorAndLastNameAscending(customers)
+      case SortingMethod.BirthDate =>
+        sortByBirthDateAscending(customers)
+      case SortingMethod.LastName =>
+        sortByLastNameDescending(customers)
+    }
+  }
 
   def sortByColorAndLastNameAscending(customers: Seq[CustomerRecord]): Seq[CustomerRecord] = {
     customers
