@@ -25,6 +25,7 @@ lazy val commandLineApp = (project in file("command-line-app"))
   .settings(
     name := "command-line-app"
   )
+  .enablePlugins(JavaAppPackaging)
   .dependsOn(core)
 
 lazy val restApiApp = (project in file("rest-api-app"))
