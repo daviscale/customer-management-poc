@@ -20,12 +20,30 @@ object CustomerManagementServer {
 
     val customerRecordActor = system.actorOf(Props[CustomerRecordActor], "customer-record-actor")
 
-    val route =
-      path("hello") {
-        get {
-          complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
+    val route = {
+      pathPrefix("records") {
+        path("") {
+          post {
+            complete("yes")
+          }
+        } ~
+        path("color") {
+          get {
+            complete("yes")
+          }
+        } ~
+        path("birthdate") {
+          get {
+            complete("yes")
+          }
+        } ~
+        path("name") {
+          get {
+            complete("yes")
+          }
         }
       }
+    }
 
     val bindingFuture = Http().newServerAt("localhost", 8080).bind(route)
 
