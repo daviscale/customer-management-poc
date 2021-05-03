@@ -31,12 +31,14 @@ object CustomerRecordExtractor {
     }
   }
 
+  val dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+
   def extract(inputRow: String): CustomerRecord = {
     val delimiter = findDelimiter(inputRow)
     val fields = inputRow
       .split(delimiter.stringValue)
       .map(_.trim)
-    val dateOfBirth = LocalDate.parse(fields(4), DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+    val dateOfBirth = LocalDate.parse(fields(4), dateTimeFormatter)
     CustomerRecord(
       firstName = fields(1),
       lastName = fields(0),

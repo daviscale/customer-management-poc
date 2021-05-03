@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
 case class AddRecord(postBody: String)
 case object RecordAdded
 
-case class ListRecords(sortingMethod: SortingMethod)
+case class GetRecords(sortingMethod: SortingMethod)
 case class SortedRecords(customerRecords: Seq[CustomerRecord])
 
 class CustomerRecordActor extends Actor {
@@ -20,7 +20,7 @@ class CustomerRecordActor extends Actor {
       val customerRecord = CustomerRecordExtractor.extract(postBody)
       customerRecords += customerRecord
       sender() ! RecordAdded
-    case ListRecords(sortingMethod) =>
+    case GetRecords(sortingMethod) =>
       sender() ! SortedRecords(CustomerRecordSorter.sort(customerRecords, sortingMethod))
     case other =>
       println(s"ERROR: Received an unknown message $other")

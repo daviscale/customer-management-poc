@@ -40,6 +40,7 @@ lazy val customerRestManagement = (project in file("customer-rest-management"))
       "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
       "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
       "com.typesafe.akka" %% "akka-stream" % akkaVersion,
+      "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion
     )
   )
   .dependsOn(core)
