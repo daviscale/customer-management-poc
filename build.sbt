@@ -35,8 +35,8 @@ lazy val customerRestManagement = (project in file("customer-rest-management"))
   .settings(
     name := "customer-rest-management",
     libraryDependencies ++= Seq(
-      "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
-      "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion % "test"
+      "com.typesafe.akka" %% "akka-actor" % akkaVersion,
+      "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test"
     )
   )
   .dependsOn(core)
