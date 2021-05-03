@@ -31,7 +31,7 @@ object CustomerRecordExtractor {
     }
   }
 
-  val dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+  val dateTimeFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
 
   def extract(inputRow: String): CustomerRecord = {
     val delimiter = findDelimiter(inputRow)
