@@ -24,22 +24,34 @@ class CustomerRecordExtractorSpec extends AnyFlatSpec {
     LocalDate.of(1970, 1, 12)
   )
 
-  def runTest(delimiter: String): Boolean = {
+  def runExtractionTest(delimiter: String): Boolean = {
     CustomerRecordExtractor
       .extract(makeInputRow(delimiter)) == expectedCustomerRecord
   }
 
   "CustomerRecordExtractor" should "extract a CustomerRecord when a comma delimiter is used" in {
-    assert(runTest(","))
-    assert(runTest(" , "))
+    assert(runExtractionTest(","))
+    assert(runExtractionTest(" , "))
   }
 
   it should "extract a CustomerRecord when a pipe delimiter is used" in {
-    assert(runTest("|"))
-    assert(runTest(" | "))
+    assert(runExtractionTest("|"))
+    assert(runExtractionTest(" | "))
   }
 
   it should "extract a CustomerRecord when a space delimiter is used" in {
-    assert(runTest(" "))
+    assert(runExtractionTest(" "))
+  }
+
+  it should "find a comma delimiter when a row contains a comma" in {
+    assert(CustomerRecordExtractor.findDelimiter("fooo,").stringValue == ",")
+  }
+
+  it should "find a pipe delimiter when a row contains a pipe" in {
+    assert(CustomerRecordExtractor.findDelimiter("fooo|").stringValue == "\\|")
+  }
+
+  it should "find a space delimiter when a row contains neither a comma nor a pipe" in {
+    assert(CustomerRecordExtractor.findDelimiter("fooo ").stringValue == " ")
   }
 }
