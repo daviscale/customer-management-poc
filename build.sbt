@@ -10,7 +10,7 @@ lazy val aggregate = (project in file("."))
   .settings(
     name := "aggregate"
   )
-  .aggregate(core, recordSorterCmd, restApiApp)
+  .aggregate(core, recordSorterCmd, customerRestManagement)
 
 lazy val core = (project in file("core"))
   .settings(
@@ -29,8 +29,9 @@ lazy val recordSorterCmd = (project in file("record-sorter-cmd"))
   .enablePlugins(JavaAppPackaging)
   .dependsOn(core)
 
-lazy val restApiApp = (project in file("rest-api-app"))
+// A RESTful API app that can update and view customer data
+lazy val customerRestManagement = (project in file("customer-rest-management"))
   .settings(
-    name := "rest-api-app"
+    name := "customer-rest-management"
   )
   .dependsOn(core)
