@@ -1,6 +1,8 @@
 package org.daviscale.customer
 package rest
 
+import actor._
+
 import akka.actor._
 
 import akka.http.scaladsl.Http
@@ -15,6 +17,8 @@ object CustomerManagementServer {
     implicit val system = ActorSystem("customer-management-system")
     // needed for the future flatMap/onComplete in the end
     implicit val executionContext = system.dispatcher
+
+    val customerRecordActor = system.actorOf(Props[CustomerRecordActor], "customer-record-actor")
 
     val route =
       path("hello") {
