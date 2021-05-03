@@ -10,7 +10,7 @@ lazy val aggregate = (project in file("."))
   .settings(
     name := "aggregate"
   )
-  .aggregate(core, commandLineApp, restApiApp)
+  .aggregate(core, recordSorterCmd, restApiApp)
 
 lazy val core = (project in file("core"))
   .settings(
@@ -21,9 +21,10 @@ lazy val core = (project in file("core"))
     )
   )
 
-lazy val commandLineApp = (project in file("command-line-app"))
+// Command line application that sorts records
+lazy val recordSorterCmd = (project in file("record-sorter-cmd"))
   .settings(
-    name := "command-line-app"
+    name := "record-sorter-cmd"
   )
   .enablePlugins(JavaAppPackaging)
   .dependsOn(core)
