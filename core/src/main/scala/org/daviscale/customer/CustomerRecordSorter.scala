@@ -1,17 +1,30 @@
 package org.daviscale.customer
 
-sealed trait SortingMethod
+sealed trait SortingMethod {
+  val prettyPrinted: String
+}
 
 object SortingMethod {
-  case object ColorAndLastName extends SortingMethod
-  case object BirthDate extends SortingMethod
-  case object LastName extends SortingMethod
+  case object ColorAndLastName extends SortingMethod {
+    val prettyPrinted: String = "Sorted by color and last name in ascending order"
+  }
+  case object BirthDate extends SortingMethod {
+    val prettyPrinted: String = "Sorted by birth date in ascending order"
+  }
+  case object LastName extends SortingMethod {
+    val prettyPrinted: String = "Sorted by last name in descending order"
+  }
 
   val all = Seq(
     ColorAndLastName,
     BirthDate,
     LastName
   )
+
+  def fromString(sortingMethodStr: String): Option[SortingMethod] = {
+    all
+      .find(_.toString.equalsIgnoreCase(sortingMethodStr))
+  }
 }
 
 object CustomerRecordSorter {
