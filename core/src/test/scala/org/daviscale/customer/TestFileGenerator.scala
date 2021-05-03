@@ -64,7 +64,8 @@ object TestFileGenerator {
         lastName = randomSeqEntry(lastNames),
         email = randomSeqEntry(emails),
         favoriteColor = randomSeqEntry(favoriteColors),
-        dateOfBirth = LocalDate.of(randomRangeValue(1940 to 2000), randomRangeValue(1 to 12), randomRangeValue(1 to 28))
+        dateOfBirth = LocalDate
+          .of(randomRangeValue(1940 to 2000), randomRangeValue(1 to 12), randomRangeValue(1 to 28))
       )
     }
   }
@@ -78,7 +79,7 @@ object TestFileGenerator {
       customerRecord.firstName,
       customerRecord.email,
       customerRecord.favoriteColor,
-      customerRecord.dateOfBirth
+      customerRecord.dateOfBirth.format(CustomerRecordExtractor.dateTimeFormatter)
     ).mkString(delimiter)
   }
 
