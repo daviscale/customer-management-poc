@@ -22,7 +22,7 @@ object CommandLineMain {
       "Filename must refer to a comma, pipe, and space delimited file",
       s"Sorting method must be one of: $allSortingMethodsPrinted",
       "Example usage:",
-      s"./sortCustomers myCustomers.csv ${SortingMethod.BirthDate}"
+      s"./record-sorter-cmd myCustomers.csv ${SortingMethod.BirthDate}"
     )
 
     messages.foreach(println)
