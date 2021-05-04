@@ -5,6 +5,7 @@ import actor._
 
 import akka.actor._
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.Http.ServerBinding
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.server.Directives._
@@ -13,18 +14,18 @@ import akka.util.Timeout
 
 import scala.concurrent.Future
 import scala.concurrent.duration._
-import scala.io.StdIn
 
 object CustomerManagementServer {
+  // needed for serializing and deserializing JSON
+  import JsonFormats._
+
+  implicit val system = ActorSystem("customer-management-system")
+  // needed for the future flatMap/onComplete in the end
+  implicit val executionContext = system.dispatcher
+
+  var bindingFuture: Future[ServerBinding] = null
 
   def main(args: Array[String]): Unit = {
-    // needed for serializing and deserializing JSON
-    import JsonFormats._
-
-    implicit val system = ActorSystem("customer-management-system")
-    // needed for the future flatMap/onComplete in the end
-    implicit val executionContext = system.dispatcher
-
     val customerRecordActor = system.actorOf(Props[CustomerRecordActor], "customer-record-actor")
 
     // timeout for the GET requests to return
@@ -59,10 +60,12 @@ object CustomerManagementServer {
       }
     }
 
-    val bindingFuture = Http().newServerAt("localhost", 8080).bind(route)
+    bindingFuture = Http().newServerAt("localhost", 8080).bind(route)
 
-    println(s"Server online at http://localhost:8080/\nPress RETURN to stop...")
-    StdIn.readLine() // let it run until user presses return
+    println(s"Server online at http://localhost:8080/")
+  }
+
+  def stopServer() {
     bindingFuture
       .flatMap(_.unbind()) // trigger unbinding from the port
       .onComplete(_ => system.terminate()) // and shutdown when done
