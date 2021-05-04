@@ -43,4 +43,5 @@ lazy val customerRestManagement = (project in file("customer-rest-management"))
       "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion
     )
   )
+  .enablePlugins(JavaAppPackaging)
   .dependsOn(core % "compile->compile;test->test")
