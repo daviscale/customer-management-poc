@@ -2,7 +2,7 @@
 
 ## Background
 
-This repository provides two proof of concept applications that sort customer data. One is a command line application that reads a delimited file and outputs sorted delimited data. The other application is a RESTful server. Data can be uploaded to the server with a POST endpoint. Sorted data can be returned with three different GET endpoints. Both applications provide three sorting options:
+This repository provides two proof of concept applications that sort customer data. One is a command line application that reads delimited files and outputs sorted delimited data. The other application is a RESTful server. Data can be uploaded to the server with a POST endpoint. Sorted data can be returned with three different GET endpoints. Both applications provide three sorting options:
 
 - sorted by favorite color then by last name ascending
 - sorted by birth date, ascending
