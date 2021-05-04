@@ -57,10 +57,10 @@ Invalid usage.
 Correct usage is as follows.
 ./record-sorter-cmd [output-delimiter] [sorting-method] [filename1] [filename2] ...
 
-preferred-delimited must be one of the following words: comma, space, pipe
+output-delimiter must be one of the following words: comma, space, pipe
 sorting-method must be one of: ColorAndLastName, BirthDate, LastName
 
-Filenames must refer to a comma, pipe, and space delimited file
+Filenames must refer to either a comma, pipe, or space delimited file
 At least one filename argument must be present
 Example usage:
 ./record-sorter-cmd comma BirthDate record1.txt record2.txt record3.txt

@@ -18,10 +18,10 @@ object CommandLineMain {
       "Correct usage is as follows.",
       "./record-sorter-cmd [output-delimiter] [sorting-method] [filename1] [filename2] ...",
       "",
-      "output-delimited must be one of the following words: comma, space, pipe",
+      "output-delimiter must be one of the following words: comma, space, pipe",
       s"sorting-method must be one of: $allSortingMethodsPrinted",
       "",
-      "Filenames must refer to a comma, pipe, and space delimited file",
+      "Filenames must refer to either a comma, pipe, or space delimited file",
       "At least one filename argument must be present",
       "Example usage:",
       s"./record-sorter-cmd comma ${SortingMethod.BirthDate} record1.txt record2.txt record3.txt"
