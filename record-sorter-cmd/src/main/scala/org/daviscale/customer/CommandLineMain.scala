@@ -17,7 +17,7 @@ object CommandLineMain {
       "Invalid usage.",
       "",
       "Correct usage is as follows.",
-      "./sortCustomers [filename] [sorting-method]",
+      "./record-sorter-cmd [filename] [sorting-method]",
       "",
       "Filename must refer to a comma, pipe, and space delimited file",
       s"Sorting method must be one of: $allSortingMethodsPrinted",
