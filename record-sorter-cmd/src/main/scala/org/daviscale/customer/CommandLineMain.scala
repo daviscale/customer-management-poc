@@ -21,7 +21,7 @@ object CommandLineMain {
       "output-delimiter must be one of the following words: comma, space, pipe",
       s"sorting-method must be one of: $allSortingMethodsPrinted",
       "",
-      "Filenames must refer to a comma, pipe, and space delimited file",
+      "Filenames must refer to either a comma, pipe, or space delimited file",
       "At least one filename argument must be present",
       "Example usage:",
       s"./record-sorter-cmd comma ${SortingMethod.BirthDate} record1.txt record2.txt record3.txt"
