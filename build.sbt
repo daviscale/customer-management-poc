@@ -29,7 +29,7 @@ lazy val recordSorterCmd = (project in file("record-sorter-cmd"))
     name := "record-sorter-cmd"
   )
   .enablePlugins(JavaAppPackaging)
-  .dependsOn(core)
+  .dependsOn(core % "compile->compile;test->test")
 
 // A RESTful API app that can update and view customer data
 lazy val customerRestManagement = (project in file("customer-rest-management"))
@@ -43,4 +43,4 @@ lazy val customerRestManagement = (project in file("customer-rest-management"))
       "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion
     )
   )
-  .dependsOn(core)
+  .dependsOn(core % "compile->compile;test->test")
