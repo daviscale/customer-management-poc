@@ -17,7 +17,7 @@ Building and running these applications requies Java 1.8 or later and the [Scala
 To build the applications, run the `buildApps.sh` script in the root directory of the repository. The script builds tarballs for both the command line application and the RESTful application. The script requires a target directory argument specifying where the tarballs should be placed. Example:
 
 ```
- ~  customer-management-poc   main  %   ./buildApps.sh ~
+./buildApps.sh ~
 [info] welcome to sbt 1.5.0 (Private Build Java 14.0.2)
 [info] loading settings for project customer-management-poc-build from plugins.sbt ...
 [info] loading project definition from /home/cdavis/customer-management-poc/project
@@ -37,7 +37,7 @@ To build the applications, run the `buildApps.sh` script in the root directory o
 First, untar the `record-sorter-cmd` tarball created in the previous section:
 
 ```
- ~  %  tar xzvf record-sorter-cmd-0.1.0-SNAPSHOT.tgz
+tar xzvf record-sorter-cmd-0.1.0-SNAPSHOT.tgz
 record-sorter-cmd-0.1.0-SNAPSHOT/
 record-sorter-cmd-0.1.0-SNAPSHOT/lib/
 record-sorter-cmd-0.1.0-SNAPSHOT/lib/org.daviscale.record-sorter-cmd-0.1.0-SNAPSHOT.jar
@@ -87,7 +87,7 @@ Hill Frank noreply@example.com Indigo 03/19/1944
 First, untar the tarball created in the "Building" section:
 
 ```
- ~  %  tar xzvf customer-rest-management-0.1.0-SNAPSHOT.tgz
+tar xzvf customer-rest-management-0.1.0-SNAPSHOT.tgz
 customer-rest-management-0.1.0-SNAPSHOT/
 customer-rest-management-0.1.0-SNAPSHOT/lib/
 customer-rest-management-0.1.0-SNAPSHOT/lib/com.twitter.hpack-1.0.2.jar
@@ -115,7 +115,7 @@ customer-rest-management-0.1.0-SNAPSHOT/bin/customer-rest-management
 Then, navigate to the `bin` directory and start the app:
 
 ```
- ~  customer-rest-management-0.1.0-SNAPSHOT  bin  %  ./customer-rest-management
+./customer-rest-management
 Server online at http://localhost:8080/
 ```
 
