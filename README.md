@@ -51,30 +51,32 @@ record-sorter-cmd-0.1.0-SNAPSHOT/bin/record-sorter-cmd
 Then, navigagte to the `bin` subdirectory of the expanded folder. The script is executed simply with `./record-sorter-cmd`. A help message is printed if there are no arguments.
 
 ```
- ~  record-sorter-cmd-0.1.0-SNAPSHOT  bin  %  ./record-sorter-cmd
+./record-sorter-cmd
 Invalid usage.
 
 Correct usage is as follows.
-./record-sorter-cmd [filename] [sorting-method]
+./record-sorter-cmd [output-delimiter] [sorting-method] [filename1] [filename2] ...
 
-Filename must refer to a comma, pipe, and space delimited file
-Sorting method must be one of: ColorAndLastName, BirthDate, LastName
+preferred-delimited must be one of the following words: comma, space, pipe
+sorting-method must be one of: ColorAndLastName, BirthDate, LastName
+
+Filenames must refer to a comma, pipe, and space delimited file
+At least one filename argument must be present
 Example usage:
-./record-sorter-cmd myCustomers.csv BirthDate
+./record-sorter-cmd myCustomers.csv comma BirthDate record1.txt record2.txt record3.txt
 
 ```
 
-Here's an example with a valid filename and sorting option:
+Here's an example with a valid delimiter and sorting options and valid file names:
 
 ```
- ~  record-sorter-cmd-0.1.0-SNAPSHOT  bin  %  ./record-sorter-cmd ~/customer-management-poc/core/src/main/resources/pipeDelimited.txt ColorAndLastName
-Sorted by color and last name in ascending order:
+./record-sorter-cmd Space Birthdate commaDelimited.txt pipeDelimited.txt spaceDelimited.txt
+Sorted by birth date in ascending order:
 
-Hill | Sally | volunteer@example.org | Blue | 06/28/1983
-Smith | Jane | volunteer@example.org | Blue | 09/23/1995
-Washington | Frank | noreply@example.com | Blue | 09/11/1952
-Hill | Frank | noreply@example.com | Indigo | 03/19/1944
-Miller | Frank | volunteer@example.org | Indigo | 07/17/1959
+Miller George volunteer@example.org Red 08/11/1940
+Washington Bob volunteer@example.org Red 10/02/1940
+Miller Betty noreply@example.com Yellow 08/20/1943
+Hill Frank noreply@example.com Indigo 03/19/1944
 .
 .
 .
