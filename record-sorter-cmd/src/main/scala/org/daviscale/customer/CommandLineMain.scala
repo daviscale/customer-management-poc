@@ -40,9 +40,11 @@ object CommandLineMain {
   def sortAndPrintOutput(rows: Seq[String], sortingMethod: SortingMethod): Unit = {
     val customerRecords = rows.map(CustomerRecordExtractor.extract(_))
     val sortedRecords = CustomerRecordSorter.sort(customerRecords, sortingMethod)
+    val delimiter = CustomerRecordExtractor.findDelimiter(rows.head)
+    val outputRows = sortedRecords.map(_.toRow(delimiter))
     println(s"${sortingMethod.prettyPrinted}:")
     println("")
-    sortedRecords.foreach(println)
+    outputRows.foreach(println)
   }
 
 
