@@ -202,3 +202,7 @@ curl http://localhost:8080/records/name
 .
 .
 ```
+
+## Running Unit Tests
+
+First, start the `sbt` console in the root directory of the repo. Then, type `test` on the sbt console. That's it!
