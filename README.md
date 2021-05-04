@@ -14,7 +14,7 @@ Building and running these applications requies Java 1.8 or later and the [Scala
 
 ## Building the Applications
 
-To build the applications, run the `buildApps.sh` script in the root directory of the repository. The script builds tarballs for both the command line application and the RESTful application. The script requires a target directory argument specifying where the tarballs should be placed. Example:
+To build the applications, run the `buildApps.sh` script in the root directory of the repository. The script builds tarballs of both the command line application and the RESTful application. The script requires a target directory argument specifying where the tarballs should be placed. Example:
 
 ```
 ./buildApps.sh ~
@@ -48,7 +48,7 @@ record-sorter-cmd-0.1.0-SNAPSHOT/bin/record-sorter-cmd.bat
 record-sorter-cmd-0.1.0-SNAPSHOT/bin/record-sorter-cmd
 ```
 
-Then, navigagte to the `bin` subdirectory of the expanded folder. The script is executed simply with `./record-sorter-cmd`. A help message is printed if there are no arguments.
+Then, navigagte to the `bin` subdirectory of the expanded folder. The script is executed with `./record-sorter-cmd`. A help message is printed if there are no arguments.
 
 ```
 ./record-sorter-cmd
@@ -63,7 +63,7 @@ sorting-method must be one of: ColorAndLastName, BirthDate, LastName
 Filenames must refer to a comma, pipe, and space delimited file
 At least one filename argument must be present
 Example usage:
-./record-sorter-cmd myCustomers.csv comma BirthDate record1.txt record2.txt record3.txt
+./record-sorter-cmd comma BirthDate record1.txt record2.txt record3.txt
 
 ```
 
@@ -119,7 +119,7 @@ Then, navigate to the `bin` directory and start the app:
 Server online at http://localhost:8080/
 ```
 
-Data can be added to the application with the `addCustomers.sh` script:
+Data can be added the application with the `addCustomers.sh` script:
 
 ```
 ./addCustomers.sh core/src/main/resources/commaDelimited.txt
