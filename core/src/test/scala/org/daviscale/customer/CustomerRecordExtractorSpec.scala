@@ -21,7 +21,7 @@ class CustomerRecordExtractorSpec extends AnyFlatSpec {
     "Doe",
     "jane.doe@example.org",
     "Orange",
-    LocalDate.of(1970, 1, 12)
+    LocalDate.of(1970, 12, 1)
   )
 
   def runExtractionTest(delimiter: String): Boolean = {
