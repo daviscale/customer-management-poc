@@ -18,7 +18,7 @@ object CommandLineMain {
       "Correct usage is as follows.",
       "./record-sorter-cmd [output-delimiter] [sorting-method] [filename1] [filename2] ...",
       "",
-      "output-delimited must be one of the following words: comma, space, pipe",
+      "output-delimiter must be one of the following words: comma, space, pipe",
       s"sorting-method must be one of: $allSortingMethodsPrinted",
       "",
       "Filenames must refer to a comma, pipe, and space delimited file",

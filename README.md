@@ -57,7 +57,7 @@ Invalid usage.
 Correct usage is as follows.
 ./record-sorter-cmd [output-delimiter] [sorting-method] [filename1] [filename2] ...
 
-preferred-delimited must be one of the following words: comma, space, pipe
+output-delimiter must be one of the following words: comma, space, pipe
 sorting-method must be one of: ColorAndLastName, BirthDate, LastName
 
 Filenames must refer to a comma, pipe, and space delimited file
