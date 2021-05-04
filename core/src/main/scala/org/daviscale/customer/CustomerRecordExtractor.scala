@@ -17,6 +17,13 @@ object Delimiter {
   case object Space extends Delimiter {
     val stringValue = " "
   }
+
+  val all = List(Comma, Pipe, Space)
+
+  def fromString(delimiterStr: String): Option[Delimiter] = {
+    all
+      .find(_.toString.equalsIgnoreCase(delimiterStr))
+  }
 }
 
 object CustomerRecordExtractor {
