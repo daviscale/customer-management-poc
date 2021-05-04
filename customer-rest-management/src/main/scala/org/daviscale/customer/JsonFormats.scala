@@ -47,6 +47,7 @@ object SortingMethodJsonProtocol {
 }
 
 object JsonFormats {
+  implicit val printer = PrettyPrinter
   import LocalDateJsonProtocol._
   import SortingMethodJsonProtocol._
   implicit val statusMessageFormat = jsonFormat1(StatusMessage)
