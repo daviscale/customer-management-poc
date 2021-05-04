@@ -24,7 +24,7 @@ object CommandLineMain {
       "Filenames must refer to a comma, pipe, and space delimited file",
       "At least one filename argument must be present",
       "Example usage:",
-      s"./record-sorter-cmd myCustomers.csv comma ${SortingMethod.BirthDate} record1.txt record2.txt record3.txt"
+      s"./record-sorter-cmd comma ${SortingMethod.BirthDate} record1.txt record2.txt record3.txt"
     )
 
     messages.foreach(println)
