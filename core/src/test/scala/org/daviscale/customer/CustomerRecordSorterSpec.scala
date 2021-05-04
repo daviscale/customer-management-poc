@@ -10,7 +10,14 @@ class CustomerRecordSorterSpec extends AnyFlatSpec with Matchers {
   import TestFixture._
 
   "CustomerRecordSorterSpec" should "sort by favorite color and then by last name ascending" in {
-    CustomerRecordSorter.sortByColorAndLastNameAscending(customers.reverse) should contain theSameElementsInOrderAs customers
+    CustomerRecordSorter.sortByColorAndLastNameAscending(customers) should contain theSameElementsInOrderAs Seq(
+      one,
+      two,
+      five,
+      six,
+      three,
+      four
+    )
   }
 
   it should "sort by birth date ascending" in {
@@ -25,7 +32,7 @@ class CustomerRecordSorterSpec extends AnyFlatSpec with Matchers {
   }
 
   it should "sort by last name descending" in {
-    CustomerRecordSorter.sortByLastNameDescending(customers) should contain theSameElementsInOrderAs(customers.reverse)
+    CustomerRecordSorter.sortByLastNameDescending(customers.reverse) should contain theSameElementsInOrderAs(customers)
   }
 
   object TestFixture {
@@ -51,13 +58,13 @@ class CustomerRecordSorterSpec extends AnyFlatSpec with Matchers {
 
     val three = baseRecord.copy(
       lastName = "Charlie",
-      favoriteColor = "Green",
+      favoriteColor = "Yellow",
       dateOfBirth = LocalDate.of(1945, 9, 22)
     )
 
     val four = baseRecord.copy(
       lastName = "Delta",
-      favoriteColor = "Green",
+      favoriteColor = "Yellow",
       dateOfBirth = LocalDate.of(1947, 2, 17)
     )
 
