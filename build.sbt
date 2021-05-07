@@ -35,6 +35,8 @@ lazy val recordSorterCmd = (project in file("record-sorter-cmd"))
 lazy val customerRestManagement = (project in file("customer-rest-management"))
   .settings(
     name := "customer-rest-management",
+    // allows app to be stopped on the sbt console with Crtl-C
+    run / fork := true,
     libraryDependencies ++= Seq(
       "com.typesafe.akka" %% "akka-actor" % akkaVersion,
       "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
