@@ -88,4 +88,8 @@ class CustomerRestManagementApiIntegrationSpec extends AsyncFlatSpec with Before
   it should "return records sorted by last name when the /records/name endpoint is used" in {
     runGetTest(Seq(pipeCustomer, commaCustomer, spaceCustomer), "name")
   }
+
+  it should "returns records sorted by email in descending order when the /records/email endpoint is used" in {
+    runGetTest(Seq(commaCustomer, spaceCustomer, pipeCustomer), "email")
+  }
 }

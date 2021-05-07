@@ -56,6 +56,12 @@ object CustomerManagementServer {
             val future = (customerRecordActor ? GetRecords(SortingMethod.LastName)).mapTo[SortedRecords]
             complete(future)
           }
+        } ~
+        path("email") {
+          get {
+            val future = (customerRecordActor ? GetRecords(SortingMethod.Email)).mapTo[SortedRecords]
+            complete(future)
+          }
         }
       }
     }
