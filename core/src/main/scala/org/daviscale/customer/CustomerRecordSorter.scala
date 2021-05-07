@@ -15,10 +15,15 @@ object SortingMethod {
     val prettyPrinted: String = "Sorted by last name in descending order"
   }
 
+  case object Email extends SortingMethod {
+    val prettyPrinted: String = "Sorted by email in descending order"
+  }
+
   val all = Seq(
     ColorAndLastName,
     BirthDate,
-    LastName
+    LastName,
+    Email
   )
 
   def fromString(sortingMethodStr: String): Option[SortingMethod] = {
@@ -37,6 +42,8 @@ object CustomerRecordSorter {
         sortByBirthDateAscending(customers)
       case SortingMethod.LastName =>
         sortByLastNameDescending(customers)
+      case SortingMethod.Email =>
+        sortByEmailDescending(customers)
     }
   }
 
@@ -69,6 +76,13 @@ object CustomerRecordSorter {
     customers
       .sortWith { (customer1, customer2) =>
         customer1.lastName > customer2.lastName
+      }
+  }
+
+  def sortByEmailDescending(customers: Seq[CustomerRecord]): Seq[CustomerRecord] = {
+    customers
+      .sortWith { (customer1, customer2) =>
+        customer1.email > customer2.email
       }
   }
 
