@@ -20,7 +20,7 @@ object CustomerManagementServer {
   import JsonFormats._
 
   implicit val system = ActorSystem("customer-management-system")
-  // needed for the future flatMap/onComplete in the end
+  // needed for the future flatMap/onComplete in the stopServer method
   implicit val executionContext = system.dispatcher
 
   var bindingFuture: Future[ServerBinding] = null
