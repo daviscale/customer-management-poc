@@ -23,14 +23,13 @@ object CustomerManagementServer {
   // needed for the future flatMap/onComplete in the stopServer method
   implicit val executionContext = system.dispatcher
 
+  val customerRecordActor = system.actorOf(Props[CustomerRecordActor], "customer-record-actor")
   var bindingFuture: Future[ServerBinding] = null
 
+  // timeout for the GET requests to return
+  implicit val timeout: Timeout = 10.seconds
+
   def main(args: Array[String]): Unit = {
-    val customerRecordActor = system.actorOf(Props[CustomerRecordActor], "customer-record-actor")
-
-    // timeout for the GET requests to return
-    implicit val timeout: Timeout = 10.seconds
-
     val route = {
       pathPrefix("records") {
         post {
@@ -41,26 +40,22 @@ object CustomerManagementServer {
         } ~
         path("color") {
           get {
-            val future = (customerRecordActor ? GetRecords(SortingMethod.ColorAndLastName)).mapTo[SortedRecords]
-            complete(future)
+            completeGetRequest(SortingMethod.ColorAndLastName)
           }
         } ~
         path("birthdate") {
           get {
-            val future = (customerRecordActor ? GetRecords(SortingMethod.BirthDate)).mapTo[SortedRecords]
-            complete(future)
+            completeGetRequest(SortingMethod.BirthDate)
           }
         } ~
         path("name") {
           get {
-            val future = (customerRecordActor ? GetRecords(SortingMethod.LastName)).mapTo[SortedRecords]
-            complete(future)
+            completeGetRequest(SortingMethod.LastName)
           }
         } ~
         path("email") {
           get {
-            val future = (customerRecordActor ? GetRecords(SortingMethod.Email)).mapTo[SortedRecords]
-            complete(future)
+            completeGetRequest(SortingMethod.Email)
           }
         }
       }
@@ -69,6 +64,11 @@ object CustomerManagementServer {
     bindingFuture = Http().newServerAt("localhost", 8080).bind(route)
 
     println(s"Server online at http://localhost:8080/")
+  }
+
+  def completeGetRequest(sortingMethod: SortingMethod) = {
+    val future = (customerRecordActor ? GetRecords(sortingMethod)).mapTo[SortedRecords]
+    complete(future)
   }
 
   def stopServer() {
